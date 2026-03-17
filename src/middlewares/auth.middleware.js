@@ -24,7 +24,7 @@ async function authUser(req, res, next) {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)       // verify the token and get the decoded payload
 
         req.user = decoded
 
