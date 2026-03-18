@@ -36,7 +36,7 @@ export const useAuth = () => {
         setLoading(true)
         try {
             const data = await logout()
-            setUser(null)
+            setUser(null)       // in logout no need to handle userdata , so null
         } catch (err) {
 
         } finally {
