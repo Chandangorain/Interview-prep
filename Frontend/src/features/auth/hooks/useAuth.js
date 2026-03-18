@@ -8,11 +8,35 @@ export const useAuth = () => {
   const context = useContext(AuthContext)
   const { user, setUser, loading, setLoading } = context
 
-   const handleLogin = async ({ email, password }) => {
+   const handleLogin = async ({ email, password }) => {     // how login is handled in the app, we will call this function from the login page and pass the email and password entered by the user and this function will call the login api and set the user data in the context if the login is successful and also set the loading state to true while the login request is being processed and set it to false once the request is completed.
         setLoading(true)
         try {
             const data = await login({ email, password })
             setUser(data.user)
+        } catch (err) {
+
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const handleRegister = async ({ username, email, password }) => {
+        setLoading(true)
+        try {
+            const data = await register({ username, email, password })
+            setUser(data.user)
+        } catch (err) {
+
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const handleLogout = async () => {
+        setLoading(true)
+        try {
+            const data = await logout()
+            setUser(null)
         } catch (err) {
 
         } finally {
