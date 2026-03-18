@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router'
 import "../auth.form.scss"
 
 const Login = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate() 
 
      const handleSubmit =  (e) => {
         e.preventDefault()
