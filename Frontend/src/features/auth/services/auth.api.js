@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios"           // this is the api layers which will be used to make http requests to the backend server
 
 const api = axios.create({
     baseURL: "http://localhost:3000",
