@@ -20,7 +20,7 @@ export const useAuth = () => {
         }
     }
 
-    const handleRegister = async ({ username, email, password }) => {
+    const handleRegister = async ({ username, email, password }) => { //handleRegister function sends user registration data (username, email, password) to the backend server using an API request
         setLoading(true)
         try {
             const data = await register({ username, email, password })

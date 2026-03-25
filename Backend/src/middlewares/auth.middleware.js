@@ -1,3 +1,5 @@
+// Client request → middleware → token verification → allow or reject request
+
 const jwt = require("jsonwebtoken")
 const tokenBlacklistModel = require("../models/blacklist.model")
 
