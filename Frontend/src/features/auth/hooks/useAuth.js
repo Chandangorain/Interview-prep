@@ -45,6 +45,18 @@ export const useAuth = () => {
     }
 
 
+       useEffect(()=>{
+
+        const getAndSetUser=async()=>{
+            const data=await getMe()  //get me api call , brings the userata from backend
+            setUser(data.user)
+            setLoading(false)
+        }
+        getAndSetUser()
+
+    },[])
+
+    
     return { user, loading, handleRegister, handleLogin, handleLogout }
 
 }
