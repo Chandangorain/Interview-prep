@@ -43,7 +43,7 @@ const technicalQuestionSchema = new mongoose.Schema({
         type: String,
         required: [ true, "Technical question is required" ]
     },
-    intention: {
+    intention: { 
         type: String,
         required: [ true, "Intention is required" ]
     },
