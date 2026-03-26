@@ -1,0 +1,88 @@
+const mongoose = require('mongoose');
+
+
+/**
+ * job description schema
+ * 
+ * resume text :String,
+ * self description :String ,
+ * overall score:Number
+ * 
+ * technical question :
+ *       [{
+ *          question:" ",
+ *          intention:" ",
+ *          answer :" ",    
+ *          }]
+ * 
+ * behavioural quesitions :
+ *           [{
+ *          question:" ",
+ *          intention:" ",
+ *          answer :" ",    
+ *          }]
+ * 
+ * skill gaps :
+ *         [{
+ *          skill:" ",
+ *          severity :{
+ *              type:String,
+ *              enum:["low","med","high"],   }
+ *              
+ *          }]
+ * preparation plan : [{
+ *      day:Number,
+ *      focus:String,
+ *      tasks:[String]
+ * 
+ *              }]
+ * 
+ */
+const technicalQuestionSchema = new mongoose.Schema({
+    question: {
+        type: String,
+        required: [ true, "Technical question is required" ]
+    },
+    intention: {
+        type: String,
+        required: [ true, "Intention is required" ]
+    },
+    answer: {
+        type: String,
+        required: [ true, "Answer is required" ]
+    }
+}, {
+    _id: false      // no need of id so false
+})
+
+const interviewReportSchema = new mongoose.Schema({
+    jobDescription: {
+        type: String,
+        required: [ true, "Job description is required" ]
+    },
+    resume: {
+        type: String,
+    },
+    selfDescription: {
+        type: String,       // with help of this ai will know about user's knowledge
+    },
+    matchScore: {
+        type: Number,
+        min: 0,
+        max: 100,
+    },
+    technicalQuestions: [ technicalQuestionSchema ],  // call the technicalQuestionSchema
+    behavioralQuestions: [ behavioralQuestionSchema ],
+    skillGaps: [ skillGapSchema ],
+    preparationPlan: [ preparationPlanSchema ],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
+    },
+    title: {
+        type: String,
+        required: [ true, "Job title is required" ]
+    }
+}, {
+    timestamps: true
+})
