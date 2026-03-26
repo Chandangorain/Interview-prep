@@ -87,7 +87,7 @@ const skillGapSchema = new mongoose.Schema({
     _id: false
 })
 
-const preparationPlanSchema = new mongoose.Schema({
+const preparationPlanSchema = new mongoose.Schema({  
     day: {
         type: Number,
         required: [ true, "Day is required" ]
