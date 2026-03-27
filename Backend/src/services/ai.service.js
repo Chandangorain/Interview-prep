@@ -72,19 +72,20 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
                         Resume: ${resume}
                         Self Description: ${selfDescription}
                         Job Description: ${jobDescription}
+`
 
-
-
-    const response = await ai.models.generateContent({  // this is syntax for output 
-        model: "gemini-2.5-flash",
-        contents: "",
+    const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: prompt,
         config: {
-            responseMimeType: "application/json",   //response type is json
-            responseSchema: zodToJsonSchema(interviewReportSchema), // json format must be in same format like interview report schema
+            responseMimeType: "application/json",   // output in json format
+            responseSchema: zodToJsonSchema(interviewReportSchema), //schema of json format must be same like as interviewReportSchema
         }
     })
+
+    console.log( JSON.parse(response.text))
 
 
 }
 
-module.exports=invokeGeminiAi
+module.exports = generateInterviewReport
