@@ -78,12 +78,12 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
         model: "gemini-3-flash-preview",
         contents: prompt,
         config: {
-            responseMimeType: "application/json",   // output in json format
-            responseSchema: zodToJsonSchema(interviewReportSchema), //schema of json format must be same like as interviewReportSchema
+            responseMimeType: "application/json",
+            responseSchema: zodToJsonSchema(interviewReportSchema),
         }
     })
 
-    console.log( JSON.parse(response.text))
+    return JSON.parse(response.text)
 
 
 }

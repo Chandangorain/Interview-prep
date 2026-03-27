@@ -5,7 +5,17 @@ const {resume,selfDescription,jobDescription}=require("./src/services/temp")
 const generateInterviewReport =require("./src/services/ai.service")
 connectToDB()
 
-generateInterviewReport({resume,selfDescription,jobDescription})
+async function runAI() {
+    const report = await generateInterviewReport({
+        resume,
+        selfDescription,
+        jobDescription
+    })
+
+    console.log("Interview Report Generated:\n", report)
+}
+
+runAI()
 app.listen(3000, () => {
     console.log("Server is running on port 3000")
 })
