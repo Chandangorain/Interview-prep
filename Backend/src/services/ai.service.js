@@ -122,4 +122,4 @@ Return ONLY valid JSON.
 
 // ✅ CHANGE HERE (export style fixed)
 
-module.exports =  generateInterviewReport 
+module.exports = {generateInterviewReport}

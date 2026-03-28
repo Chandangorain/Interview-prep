@@ -96,10 +96,10 @@ const preparationPlanSchema = new mongoose.Schema({
         type: String,
         required: [ true, "Focus is required" ]
     },
-    tasks: [ {
-        type: String,
-        required: [ true, "Task is required" ]
-    } ]
+    tasks: [ 
+         String
+        
+     ]
 })
 
 const interviewReportSchema = new mongoose.Schema({
