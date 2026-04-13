@@ -12,10 +12,10 @@ app.use(cors({
 
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
-
+const interviewRouter = require("./routes/interview.routes")
 
 /* using all the routes here */
 app.use("/api/auth", authRouter)        // api/auth is the prefix of all routes of authroutes.js. for /login = api/auth/login,
-
+app.use("/api/interview", interviewRouter)
 
 module.exports=app;
