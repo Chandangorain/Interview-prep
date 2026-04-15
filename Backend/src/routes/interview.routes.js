@@ -2,6 +2,7 @@ const express = require("express")  // this ia interview route , now it will be 
 const authMiddleware=require("../middlewares/auth.middleware")
 const interviewRouter = express.Router()
 const interviewController=require("../controllers/interview.controller")
+const upload=require("../middlewares/file.middleware")
 /**
  * 
  * @route POST /api/interview/generate-report
@@ -9,7 +10,7 @@ const interviewController=require("../controllers/interview.controller")
  * @access private
  * 
  */
-interviewRouter.post("/",authMiddleware.authUser , interviewController.generateInterviewReportController)   // when user will hit this route then first authMiddleware will run and then interviewController will run;
+interviewRouter.post("/",authMiddleware.authUser ,upload.single("resume"), interviewController.generateInterViewReportController)   // when user will hit this route then first authMiddleware will run and then interviewController will run;
 
 
 module.exports=interviewRouter
