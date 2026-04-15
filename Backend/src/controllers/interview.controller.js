@@ -8,19 +8,20 @@ const interviewReportModel=require("../models/interviewReport.model")
  */
 async function generateInterViewReportController(req, res){
    
-    const resumeContent=pdfParse(req.file.buffer)  // this will give us the content of the pdf file in text format
-    const {selfDescription,jobDescription}=req.body
+    const resumeContent = await (new pdfParse.PDFParse(Uint8Array.from(req.file.buffer))).getText()  // this will give us the content of the pdf file in text format
+    const {selfDescription,jobDescription,title}=req.body
 
     // now we have resumeContent,selfDescription and jobDescription we can use these to generate interview report using openai api or any other ai api
 
     const interviewReportByAi=await generateInterviewReport({
-        resume:resumeContent,
+        resume:resumeContent.text,
         selfDescription,
         jobDescription
     })
 
     const interviewReport=await interviewReportModel.create({       // generate interview report and save it to database
          user: req.user.id,
+         title,
          resume: resumeContent.text,
         selfDescription,
         jobDescription,
